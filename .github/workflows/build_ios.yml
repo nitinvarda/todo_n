@@ -38,7 +38,7 @@ jobs:
 
       - name: Run Fastlane lane
         working-directory: ios
-        run: bundle exec fastlane beta
+        run: bundle exec fastlane beta --verbose
         env:
           VERSION: ${{ github.event.inputs.version }}
           RELEASE_NOTES: ${{ github.event.inputs.releaseNotes }}
