@@ -27,9 +27,7 @@ platform :ios do
       allowProvisioningUpdates: true,
       export_options: {
         signingStyle: "automatic" 
-      }
-      verbose: true
-      )
+      })
     upload_to_testflight(
       api_key:app_store_connect_api_key(
         key_id: "7Z5UW49WQ8",
