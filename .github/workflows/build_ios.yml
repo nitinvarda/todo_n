@@ -35,4 +35,4 @@ jobs:
           bundle install
 
       - name: Run Fastlane lane
-        run: fastlane beta
+        run: bundle exec fastlane beta
