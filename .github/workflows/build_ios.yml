@@ -54,3 +54,8 @@ jobs:
       - name: Print raw build logs
         if: failure()
         run: cat ~/Library/Logs/scan/latest.log || true
+
+      - name: Print Fastlane logs
+        if: failure()
+        run: cat ~/Library/Logs/gym/latest.log || true
+

@@ -24,11 +24,10 @@ platform :ios do
       workspace: "todo.xcworkspace",
       scheme: "todo",
       export_xcargs: "-allowProvisioningUpdates",
-      allowProvisioningUpdates: true, # ✅ Enable automatic provisioning
+      allowProvisioningUpdates: true,
       export_options: {
-        signingStyle: "automatic" # ✅ Required when enabling automatic signing
+        signingStyle: "automatic" 
       }
-      clean: true,
       verbose: true
       )
     upload_to_testflight(
