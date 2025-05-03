@@ -23,7 +23,6 @@ platform :ios do
     build_app(
       workspace: "todo.xcworkspace",
       scheme: "todo",
-      export_method: "app-store",
       clean: true,
       export_xcargs: "-allowProvisioningUpdates",
       export_options: {
