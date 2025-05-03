@@ -36,6 +36,3 @@ jobs:
 
       - name: Run Fastlane lane
         run: bundle exec fastlane beta
-        env:
-          VERSION: ${{ github.event.inputs.version }}
-          RELEASE_NOTES: ${{ github.event.inputs.releaseNotes }}
