@@ -33,10 +33,7 @@ jobs:
         working-directory: ios
         run: |
           gem install bundler
-          bundle config set --local path 'vendor/bundle'
-          bundle config set --local bin 'vendor/bundle/bin'
           bundle install
-          echo "$(pwd)/vendor/bundle/bin" >> $GITHUB_PATH
 
       - name: Run Fastlane lane
         working-directory: ios
