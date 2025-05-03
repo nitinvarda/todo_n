@@ -32,7 +32,7 @@ jobs:
           ruby-version: 3.1.0
       - name: Install Node.js dependencies
         run: npm install
-        
+
       - name: Install CocoaPods
         working-directory: ios
         run: |
@@ -50,3 +50,7 @@ jobs:
         env:
           VERSION: ${{ github.event.inputs.version }}
           RELEASE_NOTES: ${{ github.event.inputs.releaseNotes }}
+          
+      - name: Print raw build logs
+        if: failure()
+        run: cat ~/Library/Logs/scan/latest.log || true
