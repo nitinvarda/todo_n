@@ -26,6 +26,7 @@ platform :ios do
       workspace: "todo.xcworkspace",
       scheme: "todo",
       clean: true,
+      export_method: "app-store",
       export_xcargs: "-allowProvisioningUpdates",
       export_options: {
         signingStyle: "automatic",
