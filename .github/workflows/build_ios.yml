@@ -23,8 +23,6 @@ jobs:
       VERSION: ${{ github.event.inputs.version }}
       RELEASE_NOTES: ${{ github.event.inputs.releaseNotes }}
     
-    
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -56,7 +54,3 @@ jobs:
       - name: Build and Publish to TestFlight
         working-directory: ios
         run: bundle exec fastlane build_and_publish_ios
-       
-
-          
-
