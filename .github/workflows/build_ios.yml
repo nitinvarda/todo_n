@@ -54,7 +54,7 @@ jobs:
           DEVELOPER_APP_ID : ${{secrets.DEVELOPER_APP_ID }}
           DEVELOPER_APP_IDENTIFIER : ${{secrets.DEVELOPER_APP_IDENTIFIER }}
           FASTLANE_APP_ID : ${{secrets.FASTLANE_APP_ID }}
-          GIT_AUTHORIATION : ${{secrets.GIT_AUTHORIATION }}
+          GIT_AUTHORIZATION : ${{secrets.GIT_AUTHORIZATION }}
           FASTLANE_USER: ${{secrets.FASTLANE_USER}}
           FASTLANE_PASSWORD: ${{secrets.FASTLANE_PASSWORD}}
           VERSION: ${{ github.event.inputs.version }}
