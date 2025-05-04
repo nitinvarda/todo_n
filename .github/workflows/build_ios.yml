@@ -48,7 +48,9 @@ jobs:
         working-directory: ios
         run: bundle exec fastlane beta --verbose
         env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           VERSION: ${{ github.event.inputs.version }}
           RELEASE_NOTES: ${{ github.event.inputs.releaseNotes }}
+
           
 
