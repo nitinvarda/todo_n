@@ -1,4 +1,4 @@
-git_url("git@github.com-personal:nitinvarda/fast-lane-certificates.git")
+git_url("https://github.com/nitinvarda/fast-lane-certificates.git")
 
 storage_mode("git")
 
