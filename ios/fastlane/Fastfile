@@ -56,9 +56,11 @@ platform :ios do
       scheme: "todo",
       workspace: "todo.xcworkspace",
       export_method: "app-store",
-      clean: true,
       verbose: true,
       export_options: {
+        provisioningProfiles: {
+          "in.nitinvarda.todo" => "match AppStore in.nitinvarda.todo"  # ✅ match this exactly
+        },
         export_method: "app-store",
         team_id: 'YB7RTTYCHC',
       }
