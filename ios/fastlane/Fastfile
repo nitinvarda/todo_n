@@ -40,7 +40,7 @@ platform :ios do
       export_options: {
         signingStyle: "automatic",
         provisioningProfiles: {
-          "in.nitinvarda.todo" => "match AppStore in.nitinvarda.todo"
+          "in.nitinvarda.todo" => ""
         }
       })
     upload_to_testflight(
