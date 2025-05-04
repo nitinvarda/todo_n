@@ -65,6 +65,7 @@ platform :ios do
       configuration: "Release",
       export_method: "app-store",
       verbose: true,
+      silent: false,
       export_options: {
         provisioningProfiles: {
           "in.nitinvarda.todo" => "match AppStore in.nitinvarda.todo"  # ✅ match this exactly
