@@ -53,7 +53,7 @@ jobs:
     
       - name: Setup match
         working-directory: ios
-        run: bundle exec fastlane match appstore
+        run: bundle exec fastlane configure_match
 
       - name: Build and Publish to TestFlight
         working-directory: ios
