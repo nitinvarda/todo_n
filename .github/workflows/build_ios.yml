@@ -49,6 +49,12 @@ jobs:
         run: bundle exec fastlane beta --verbose
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APPLE_ISSUER_ID : ${{secrets.APPLE_ISSUER_ID }}
+          APPLE_KEY_ID : ${{secrets.APPLE_KEY_ID }}
+          DEVELOPER_APP_ID : ${{secrets.DEVELOPER_APP_ID }}
+          DEVELOPER_APP_IDENTIFIER : ${{secrets.DEVELOPER_APP_IDENTIFIER }}
+          FASTLANE_APP_ID : ${{secrets.FASTLANE_APP_ID }}
+          GIT_AUTHORIATION : ${{secrets.GIT_AUTHORIATION }}
           VERSION: ${{ github.event.inputs.version }}
           RELEASE_NOTES: ${{ github.event.inputs.releaseNotes }}
 
