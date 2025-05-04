@@ -62,9 +62,9 @@ platform :ios do
     build_app(
       scheme: "todo",
       workspace: "todo.xcworkspace",
+      configuration: "Release",
       export_method: "app-store",
       verbose: true,
-      export_xcargs: "-allowProvisioningUpdates",
       export_options: {
         provisioningProfiles: {
           "in.nitinvarda.todo" => "match AppStore in.nitinvarda.todo"  # ✅ match this exactly
