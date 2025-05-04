@@ -44,6 +44,17 @@ jobs:
         run: |
           bundle install
 
+
+      - name: Set up signing keychain
+        run: |
+            security create-keychain -p fastlane build.keychain
+            security default-keychain -s build.keychain
+            security unlock-keychain -p fastlane build.keychain
+            security set-keychain-settings build.keychain
+            
+      - name: Check code signing identities
+        run: security find-identity -v -p codesigning
+
       - name: Run Fastlane lane
         working-directory: ios
         run: bundle exec fastlane beta --verbose
