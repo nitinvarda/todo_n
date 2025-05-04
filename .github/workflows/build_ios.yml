@@ -50,6 +50,10 @@ jobs:
       - name: Setup keychain
         working-directory: ios
         run: bundle exec fastlane setup_keychain
+    
+      - name: Setup match
+        working-directory: ios
+        run: bundle exec fastlane match appstore
 
       - name: Build and Publish to TestFlight
         working-directory: ios
