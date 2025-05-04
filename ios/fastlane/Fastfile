@@ -13,46 +13,60 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-
 default_platform(:ios)
 
 platform :ios do
-  desc "Push a new beta build to TestFlight"
 
-  lane :beta do
-    increment_build_number(xcodeproj: "todo.xcodeproj")
-    match(
-      type: "appstore",
-      readonly: true,
-      keychain_name: "build.keychain",
-      keychain_password: "password",
-      api_key: app_store_connect_api_key(
-        key_id: "7Z5UW49WQ8",
-        issuer_id: "d11ea7cf-c11f-4649-94e5-051e7f797908",
-        key_filepath: "./fastlane/AuthKeys/AuthKey_7Z5UW49WQ8.p8",
-      )
+  desc "Setup keychain"
+  lane :setup_keychain do
+    delete_keychain(
+      name: keychain-name
+    ) if File.exist? File.expand_path("~/Library/Keychains/fastlane-ios-build.keychain-db")
+
+    create_keychain(
+      name: "fastlane-ios-build.keychain-db",
+      password: "password",
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600
     )
-    # build_app(scheme:"todo")
+  end
+
+  desc "Push a new beta build to TestFlight"
+  lane :build_and_publish_ios  do
+
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APPLE_KEY_ID'], # from table 1.0
+      issuer_id: ENV['APPLE_ISSUER_ID'],  # from table 1.0
+      key_filepath: ENV['APPLE_KEY_PATH'],  # from table 1.0
+      in_house: false
+    )
+    
+    match(
+      type: "appstore", # use development | appstore | ad-hoc
+      app_identifier: 'in.nitinvarda.todo', # if you have other extensions like oneginal then pass an array [com.example, com.example.OneSignalNotificationServiceExtension]
+      verbose: true,
+      api_key: api_key,
+      keychain_name: "fastlane-ios-build.keychain-db",
+      keychain_password: "password"
+    )
+
+    increment_build_number(xcodeproj: "todo.xcodeproj")
     build_app(
-      workspace: "todo.xcworkspace",
       scheme: "todo",
-      clean: true,
+      workspace: "ios/todo.xcworkspace",
       export_method: "app-store",
-      export_xcargs: "-allowProvisioningUpdates",
-      export_options: {
-        signingStyle: "automatic",
-        provisioningProfiles: {
-          "in.nitinvarda.todo" => ""
+      clean: true,
+      verbose: true,
+        export_options: {
+          export_method: "app-store",
+          team_id: 'YB7RTTYCHC',
         }
-      })
+    )
     upload_to_testflight(
-      api_key:app_store_connect_api_key(
-        key_id: "7Z5UW49WQ8",
-        issuer_id: "d11ea7cf-c11f-4649-94e5-051e7f797908",
-        key_filepath: "./fastlane/AuthKeys/AuthKey_7Z5UW49WQ8.p8",
-        duration: 1200, # optional (20 mins token)
-        in_house: false
-      )
+      skip_waiting_for_build_processing: true,
+      api_key: api_key,
+      changelog: "New Build"
     )
   end
 end

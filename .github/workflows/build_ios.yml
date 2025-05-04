@@ -1,26 +1,16 @@
 name: Deploy to Testflight
 
 on:   
-  workflow_dispatch:
-    inputs:
-      ref:
-        description: "Branch, tag, or commit to build from"
-        default: "main"
-        required: false
-      version:
-        description: 'Set the version for the build'
-        required: false
-      releaseNotes:
-        description: 'Release notes for the deployment'
-        required: false
+  push:
+    branches: [main]
 
 jobs:
   build:
     runs-on: macos-latest
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-      MATCH_KEYCHAIN_NAME: build.keychain
-      MATCH_KEYCHAIN_PASSWORD: fastlane
+      MATCH_KEYCHAIN_NAME: ${{secrets.MATCH_KEYCHAIN_NAME}}
+      MATCH_KEYCHAIN_PASSWORD: ${{secrets.MATCH_KEYCHAIN_PASSWORD}}
       APPLE_ISSUER_ID : ${{secrets.APPLE_ISSUER_ID }}
       APPLE_KEY_ID : ${{secrets.APPLE_KEY_ID }}
       DEVELOPER_APP_ID : ${{secrets.DEVELOPER_APP_ID }}
@@ -56,23 +46,15 @@ jobs:
       - name: Install dependencies
         working-directory: ios
         run: |
-          bundle install
+          bundle install      
 
-
-      - name: Set up signing keychain
-        run: |
-            security create-keychain -p fastlane build.keychain
-            security default-keychain -s build.keychain
-            security unlock-keychain -p fastlane build.keychain
-            security set-keychain-settings build.keychain
-
-      - name: Check code signing identities
-        run: security find-identity -v -p codesigning
-      
-
-      - name: Run Fastlane lane
+      - name: Setup keychain
         working-directory: ios
-        run: bundle exec fastlane beta --verbose
+        run: bundle exec fastlane setup_keychain
+
+      - name: Build and Publish to TestFlight
+        working-directory: ios
+        run: bundle exec fastlane build_and_publish_ios
        
 
           
