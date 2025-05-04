@@ -25,9 +25,9 @@ platform :ios do
       type: "appstore",
       readonly: true,
       api_key: app_store_connect_api_key(
-        key_id: ENV["APP_STORE_KEY_ID"],
-        issuer_id: ENV["APP_STORE_ISSUER_ID"],
-        key_filepath: ENV["APP_STORE_KEY_FILE"]
+        key_id: "7Z5UW49WQ8",
+        issuer_id: "d11ea7cf-c11f-4649-94e5-051e7f797908",
+        key_filepath: "./fastlane/AuthKeys/AuthKey_7Z5UW49WQ8.p8",
       )
     )
     build_app(scheme:"todo")
