@@ -13,6 +13,7 @@ jobs:
       MATCH_KEYCHAIN_PASSWORD: ${{secrets.MATCH_KEYCHAIN_PASSWORD}}
       APPLE_ISSUER_ID : ${{secrets.APPLE_ISSUER_ID }}
       APPLE_KEY_ID : ${{secrets.APPLE_KEY_ID }}
+      APPLE_KEY_PATH: ${{secrets.APPLE_KEY_PATH}}
       DEVELOPER_APP_ID : ${{secrets.DEVELOPER_APP_ID }}
       DEVELOPER_APP_IDENTIFIER : ${{secrets.DEVELOPER_APP_IDENTIFIER }}
       FASTLANE_APP_ID : ${{secrets.FASTLANE_APP_ID }}

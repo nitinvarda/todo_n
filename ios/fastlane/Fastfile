@@ -24,8 +24,8 @@ platform :ios do
     ) if File.exist? File.expand_path("~/Library/Keychains/fastlane-ios-build.keychain-db")
 
     create_keychain(
-      name: "fastlane-ios-build.keychain-db",
-      password: "password",
+      name: ENV['MATCH_KEYCHAIN_NAME'],
+      password: ENV['MATCH_KEYCHAIN_PASSWORD'],
       default_keychain: true,
       unlock: true,
       timeout: 3600
@@ -47,8 +47,8 @@ platform :ios do
       app_identifier: 'in.nitinvarda.todo', # if you have other extensions like oneginal then pass an array [com.example, com.example.OneSignalNotificationServiceExtension]
       verbose: true,
       api_key: api_key,
-      keychain_name: "fastlane-ios-build.keychain-db",
-      keychain_password: "password"
+      keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
+      keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
     )
 
     increment_build_number(xcodeproj: "todo.xcodeproj")
