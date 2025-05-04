@@ -30,19 +30,19 @@ platform :ios do
         key_filepath: "./fastlane/AuthKeys/AuthKey_7Z5UW49WQ8.p8",
       )
     )
-    build_app(scheme:"todo")
-    # build_app(
-    #   workspace: "todo.xcworkspace",
-    #   scheme: "todo",
-    #   clean: true,
-    #   export_method: "app-store",
-    #   export_xcargs: "-allowProvisioningUpdates",
-    #   export_options: {
-    #     signingStyle: "automatic",
-    #     provisioningProfiles: {
-    #       "in.nitinvarda.todo" => "match AppStore in.nitinvarda.todo"
-    #     }
-    #   })
+    # build_app(scheme:"todo")
+    build_app(
+      workspace: "todo.xcworkspace",
+      scheme: "todo",
+      clean: true,
+      export_method: "app-store",
+      export_xcargs: "-allowProvisioningUpdates",
+      export_options: {
+        signingStyle: "automatic",
+        provisioningProfiles: {
+          "in.nitinvarda.todo" => "match AppStore in.nitinvarda.todo"
+        }
+      })
     upload_to_testflight(
       api_key:app_store_connect_api_key(
         key_id: "7Z5UW49WQ8",
