@@ -9,8 +9,8 @@ jobs:
     runs-on: macos-latest
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-      MATCH_KEYCHAIN_NAME: ${{secrets.MATCH_KEYCHAIN_NAME}}
-      MATCH_KEYCHAIN_PASSWORD: ${{secrets.MATCH_KEYCHAIN_PASSWORD}}
+      MATCH_KEYCHAIN_NAME: login.keychain-db
+      MATCH_KEYCHAIN_PASSWORD: 4986
       APPLE_ISSUER_ID : ${{secrets.APPLE_ISSUER_ID }}
       APPLE_KEY_ID : ${{secrets.APPLE_KEY_ID }}
       APPLE_KEY_PATH: "fastlane/Authkeys/AuthKey_7Z5UW49WQ8.p8"
