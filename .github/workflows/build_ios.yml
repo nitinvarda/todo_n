@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-14
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       MATCH_KEYCHAIN_NAME: fastlane-ios-build
@@ -23,7 +23,11 @@ jobs:
       VERSION: ${{ github.event.inputs.version }}
       RELEASE_NOTES: ${{ github.event.inputs.releaseNotes }}
     
+      
     steps:
+      - name: Use Xcode 16
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app
+
       - name: Checkout code
         uses: actions/checkout@v3
         with:
@@ -65,6 +69,16 @@ jobs:
 
           cd $HOME/Library/Keychains/
           ls
+
+
+      - name: Run fastlane match
+        run: bundle exec fastlane ios configure_match
+        env:
+          MATCH_KEYCHAIN_NAME: fastlane-ios-build
+          MATCH_KEYCHAIN_PASSWORD: password
+          APPLE_KEY_ID: ${{ secrets.APPLE_KEY_ID }}
+          APPLE_ISSUER_ID: ${{ secrets.APPLE_ISSUER_ID }}
+          APPLE_KEY_PATH: ./fastlane/AuthKeys/AuthKey_XXXX.p8
             
 
       - name: Setup CI
