@@ -60,6 +60,9 @@ platform :ios do
 
   desc "Build project"
   lane :build_project do
+    sh("security find-identity -v -p codesigning")
+    sh("ls -la ~/Library/MobileDevice/Provisioning\\ Profiles")
+    setup_ci
     start_time = Time.now
     UI.message("⌛️ Starting build...")  
     build_app(
