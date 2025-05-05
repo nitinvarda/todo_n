@@ -33,7 +33,7 @@ platform :ios do
     
     match(
       type: "appstore", # use development | appstore | ad-hoc
-      app_identifier: 'in.nitinvarda.todo', # if you have other extensions like oneginal then pass an array [com.example, com.example.OneSignalNotificationServiceExtension]
+      app_identifier: 'in.nitinvarda.todo',
       verbose: true,
       readonly: true,
       api_key: api_key
