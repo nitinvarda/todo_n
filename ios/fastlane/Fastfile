@@ -36,9 +36,7 @@ platform :ios do
       app_identifier: 'in.nitinvarda.todo', # if you have other extensions like oneginal then pass an array [com.example, com.example.OneSignalNotificationServiceExtension]
       verbose: true,
       readonly: true,
-      api_key: api_key,
-      keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
-      keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
+      api_key: api_key
     )
     # sh("security set-key-partition-list -S apple-tool:,apple: -s -k #{ENV['MATCH_KEYCHAIN_PASSWORD']} ~/Library/Keychains/#{ENV['MATCH_KEYCHAIN_NAME']}")
   end
