@@ -47,9 +47,9 @@ jobs:
         run: |
           bundle install      
 
-      # - name: Setup keychain
-      #   working-directory: ios
-      #   run: bundle exec fastlane setup_keychain --verbose
+      - name: Setup CI
+        working-directory: ios
+        run: bundle exec fastlane setup_CI --verbose
 
       - name: Configure match
         working-directory: ios

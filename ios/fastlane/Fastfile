@@ -17,21 +17,10 @@ default_platform(:ios)
 
 platform :ios do
 
-  # desc "Setup keychain"
-  # lane :setup_keychain do
-  #   delete_keychain(
-  #     name: keychain-name
-  #   ) if File.exist? File.expand_path("~/Library/Keychains/fastlane-ios-build.keychain-db")
-
-  #   create_keychain(
-  #     name: ENV['MATCH_KEYCHAIN_NAME'],
-  #     password: ENV['MATCH_KEYCHAIN_PASSWORD'],
-  #     default_keychain: true,
-  #     unlock: true,
-  #     timeout: 3600
-  #   )
-  # end
-
+  desc "setup CI"
+  lane :setup_CI do
+    setup_ci
+  end
 
   desc "Configure match"
   lane :configure_match do
@@ -58,11 +47,12 @@ platform :ios do
     increment_build_number(xcodeproj: "todo.xcodeproj")
   end
 
+  
+
   desc "Build project"
   lane :build_project do
     sh("security find-identity -v -p codesigning")
     sh("ls -la ~/Library/MobileDevice/Provisioning\\ Profiles")
-    setup_ci
     start_time = Time.now
     UI.message("⌛️ Starting build...")  
     build_app(
