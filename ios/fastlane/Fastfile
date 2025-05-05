@@ -40,7 +40,7 @@ platform :ios do
       keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
       keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
     )
-    sh("security set-key-partition-list -S apple-tool:,apple: -s -k #{ENV['MATCH_KEYCHAIN_PASSWORD']} ~/Library/Keychains/#{ENV['MATCH_KEYCHAIN_NAME']}")
+    # sh("security set-key-partition-list -S apple-tool:,apple: -s -k #{ENV['MATCH_KEYCHAIN_PASSWORD']} ~/Library/Keychains/#{ENV['MATCH_KEYCHAIN_NAME']}")
   end
 
   
