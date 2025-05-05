@@ -13,7 +13,7 @@ jobs:
       MATCH_KEYCHAIN_PASSWORD: password
       APPLE_ISSUER_ID : ${{secrets.APPLE_ISSUER_ID }}
       APPLE_KEY_ID : ${{secrets.APPLE_KEY_ID }}
-      APPLE_KEY_PATH: "fastlane/Authkeys/AuthKey_7Z5UW49WQ8.p8"
+      APPLE_KEY_PATH: fastlane/Authkeys/AuthKey_7Z5UW49WQ8.p8
       DEVELOPER_APP_ID : ${{secrets.DEVELOPER_APP_ID }}
       DEVELOPER_APP_IDENTIFIER : ${{secrets.DEVELOPER_APP_IDENTIFIER }}
       FASTLANE_APP_ID : ${{secrets.FASTLANE_APP_ID }}
