@@ -67,10 +67,8 @@ jobs:
 
       - name: build project
         working-directory: ios
-        timeout-minutes: 30
         run: bundle exec fastlane build_project --verbose
 
       - name: upload to TestFlight
         working-directory: ios
-        timeout-minutes: 30
         run: bundle exec fastlane upld_to_testflight --verbose
