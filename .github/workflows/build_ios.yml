@@ -49,9 +49,9 @@ jobs:
     
       - name: Create custom keychain
         run: |
-          KEYCHAIN_NAME=fastlane-ios-build
+          KEYCHAIN_NAME=fastlane-ios-build.keychain-db
           KEYCHAIN_PASSWORD=password
-          KEYCHAIN_PATH="$HOME/Library/Keychains/${KEYCHAIN_NAME}.keychain-db"
+          KEYCHAIN_PATH="$HOME/Library/Keychains/$KEYCHAIN_NAME"
       
           # Create the keychain
           security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_NAME"
@@ -61,6 +61,10 @@ jobs:
       
           # Add to keychain list
           security list-keychains -s "$KEYCHAIN_PATH"
+
+
+          cd $HOME/Library/Keychains/
+          ls
             
 
       - name: Setup CI
@@ -71,13 +75,13 @@ jobs:
         working-directory: ios
         run: bundle exec fastlane configure_match --verbose
       
-      - name: Configure code signing
-        run: |
-            KEYCHAIN_NAME=fastlane-ios-build
-            KEYCHAIN_PASSWORD=password
-            KEYCHAIN_PATH="$HOME/Library/Keychains/${KEYCHAIN_NAME}.keychain-db"
+      # - name: Configure code signing
+      #   run: |
+      #       KEYCHAIN_NAME=fastlane-ios-build.keychain-db
+      #       KEYCHAIN_PASSWORD=password
+      #       KEYCHAIN_PATH="$HOME/Library/Keychains/${KEYCHAIN_NAME}"
 
-            security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+      #       security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
 
       - name: Increment build number
         working-directory: ios
