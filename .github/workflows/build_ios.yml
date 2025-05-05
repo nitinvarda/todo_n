@@ -28,7 +28,7 @@ jobs:
       - name: Use Xcode 16
         run: |
           ls /Applications/
-          sudo xcode-select -s /Applications/Xcode_16.0.app
+          sudo xcode-select -s /Applications/Xcode_16.2.app
 
       - name: Checkout code
         uses: actions/checkout@v3
