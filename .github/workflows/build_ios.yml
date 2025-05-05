@@ -58,6 +58,12 @@ jobs:
       - name: Increment build number
         working-directory: ios
         run: bundle exec fastlane inc_build_number --verbose
+
+      - name: Check installed profiles
+        run: ls -la ~/Library/MobileDevice/Provisioning\ Profiles
+      
+      - name: Check code signing identities
+        run: security find-identity -v -p codesigning
         
       - name: build project
         working-directory: ios

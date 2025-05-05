@@ -60,6 +60,8 @@ platform :ios do
 
   desc "Build project"
   lane :build_project do
+    start_time = Time.now
+    UI.message("⌛️ Starting build...")  
     build_app(
       scheme: "todo",
       workspace: "todo.xcworkspace",
@@ -75,6 +77,7 @@ platform :ios do
         team_id: 'YB7RTTYCHC',
       }
     )
+    UI.message("✅ Build finished in #{(Time.now - start_time).round}s")
   end
 
   desc "upload to testflight"
