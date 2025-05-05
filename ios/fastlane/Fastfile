@@ -17,20 +17,20 @@ default_platform(:ios)
 
 platform :ios do
 
-  desc "Setup keychain"
-  lane :setup_keychain do
-    delete_keychain(
-      name: keychain-name
-    ) if File.exist? File.expand_path("~/Library/Keychains/fastlane-ios-build.keychain-db")
+  # desc "Setup keychain"
+  # lane :setup_keychain do
+  #   delete_keychain(
+  #     name: keychain-name
+  #   ) if File.exist? File.expand_path("~/Library/Keychains/fastlane-ios-build.keychain-db")
 
-    create_keychain(
-      name: ENV['MATCH_KEYCHAIN_NAME'],
-      password: ENV['MATCH_KEYCHAIN_PASSWORD'],
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600
-    )
-  end
+  #   create_keychain(
+  #     name: ENV['MATCH_KEYCHAIN_NAME'],
+  #     password: ENV['MATCH_KEYCHAIN_PASSWORD'],
+  #     default_keychain: true,
+  #     unlock: true,
+  #     timeout: 3600
+  #   )
+  # end
 
 
   desc "Configure match"
