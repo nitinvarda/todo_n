@@ -50,11 +50,17 @@ jobs:
       - name: Setup keychain
         working-directory: ios
         run: bundle exec fastlane setup_keychain
-    
-      - name: Setup match
+        
+      - name: Increment build number
         working-directory: ios
-        run: bundle exec fastlane configure_match
+        run: bundle exec fastlane inc_build_number
+      
+      - name: build project
+        working-directory: ios
+        timeout-minutes: 30
+        run: bundle exec fastlane build_project
 
-      - name: Build and Publish to TestFlight
+      - name: upload to TestFlight
         working-directory: ios
-        run: bundle exec fastlane build_and_publish_ios
+        timeout-minutes: 30
+        run: bundle exec fastlane upld_to_testflight

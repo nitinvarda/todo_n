@@ -53,12 +53,13 @@ platform :ios do
     )
   end
 
-  desc "Push a new beta build to TestFlight"
-  lane :build_and_publish_ios  do
-
-    
-
+  desc "increment build number"
+  lane :inc_build_number  do
     increment_build_number(xcodeproj: "todo.xcodeproj")
+  end
+
+  desc "Build project"
+  lane :build_project do
     build_app(
       scheme: "todo",
       workspace: "todo.xcworkspace",
@@ -74,10 +75,15 @@ platform :ios do
         team_id: 'YB7RTTYCHC',
       }
     )
+  end
+
+  desc "upload to testflight"
+  lane :upld_to_testflight do 
     upload_to_testflight(
       skip_waiting_for_build_processing: true,
       api_key: api_key,
       changelog: "New Build"
     )
   end
+
 end
