@@ -73,14 +73,14 @@ jobs:
           ls
 
 
-      - name: Run fastlane match
-        run: bundle exec fastlane ios configure_match
-        env:
-          MATCH_KEYCHAIN_NAME: fastlane-ios-build
-          MATCH_KEYCHAIN_PASSWORD: password
-          APPLE_KEY_ID: ${{ secrets.APPLE_KEY_ID }}
-          APPLE_ISSUER_ID: ${{ secrets.APPLE_ISSUER_ID }}
-          APPLE_KEY_PATH: ./fastlane/AuthKeys/AuthKey_XXXX.p8
+      # - name: Run fastlane match
+      #   run: bundle exec fastlane ios configure_match
+      #   env:
+      #     MATCH_KEYCHAIN_NAME: fastlane-ios-build
+      #     MATCH_KEYCHAIN_PASSWORD: password
+      #     APPLE_KEY_ID: ${{ secrets.APPLE_KEY_ID }}
+      #     APPLE_ISSUER_ID: ${{ secrets.APPLE_ISSUER_ID }}
+      #     APPLE_KEY_PATH: ./fastlane/AuthKeys/AuthKey_XXXX.p8
             
 
       - name: Setup CI
