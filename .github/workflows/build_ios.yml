@@ -49,7 +49,7 @@ jobs:
 
       - name: Setup CI
         working-directory: ios
-        run: bundle exec fastlane setup_CI --verbose
+        run: bundle exec fastlane setting_continious_integration --verbose
 
       - name: Configure match
         working-directory: ios
