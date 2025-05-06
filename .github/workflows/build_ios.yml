@@ -73,6 +73,8 @@ jobs:
         run: |
           mkdir -p ios/fastlane/Authkeys
           echo "${{ secrets.APPLE_API_KEY_BASE64 }}" | base64 -d > ios/${{secrets.APPLE_KEY_PATH}}
+          echo "Listing contents of ios/fastlane/Authkeys: ${{secrets.APPLE_KEY_PATH}}"
+          ls -l ios/fastlane/Authkeys
 
       - name: Setup CI
         working-directory: ios
