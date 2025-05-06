@@ -9,7 +9,7 @@ jobs:
     runs-on: macos-14
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-      MATCH_KEYCHAIN_NAME: fastlane-ios-build.keychain-db
+      MATCH_KEYCHAIN_NAME: fastlane-ios-build
       MATCH_KEYCHAIN_PASSWORD: password
       APPLE_ISSUER_ID : ${{secrets.APPLE_ISSUER_ID }}
       APPLE_KEY_ID : ${{secrets.APPLE_KEY_ID }}
@@ -55,7 +55,7 @@ jobs:
     
       - name: Create custom keychain
         run: |
-          KEYCHAIN_NAME=fastlane-ios-build.keychain-db
+          KEYCHAIN_NAME=$MATCH_KEYCHAIN_NAME.keychain-db
           KEYCHAIN_PASSWORD=password
           KEYCHAIN_PATH="$HOME/Library/Keychains/$KEYCHAIN_NAME"
       
