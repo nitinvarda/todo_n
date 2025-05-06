@@ -50,6 +50,7 @@ platform :ios do
 
   desc "increment build number"
   lane :inc_build_number  do
+    fetch_api_key
     latest = latest_testflight_build_number(
       app_identifier: "in.nitinvarda.todo"
     )
