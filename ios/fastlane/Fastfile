@@ -35,6 +35,11 @@ platform :ios do
   desc "Configure match"
   lane :configure_match do
     api_key = fetch_api_key
+
+    latest = latest_testflight_build_number(
+      app_identifier: "in.nitinvarda.todo"
+    )
+    increment_build_number(build_number: latest + 1)
     
     match(
       type: "appstore", # use development | appstore | ad-hoc
@@ -44,17 +49,6 @@ platform :ios do
       api_key: api_key
     )
     # sh("security set-key-partition-list -S apple-tool:,apple: -s -k #{ENV['MATCH_KEYCHAIN_PASSWORD']} ~/Library/Keychains/#{ENV['MATCH_KEYCHAIN_NAME']}")
-  end
-
-  
-
-  desc "increment build number"
-  lane :inc_build_number  do
-    fetch_api_key
-    latest = latest_testflight_build_number(
-      app_identifier: "in.nitinvarda.todo"
-    )
-    increment_build_number(build_number: latest + 1)
   end
 
   

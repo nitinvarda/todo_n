@@ -73,16 +73,6 @@ jobs:
           ls
 
 
-      # - name: Run fastlane match
-      #   run: bundle exec fastlane ios configure_match
-      #   env:
-      #     MATCH_KEYCHAIN_NAME: fastlane-ios-build
-      #     MATCH_KEYCHAIN_PASSWORD: password
-      #     APPLE_KEY_ID: ${{ secrets.APPLE_KEY_ID }}
-      #     APPLE_ISSUER_ID: ${{ secrets.APPLE_ISSUER_ID }}
-      #     APPLE_KEY_PATH: ./fastlane/AuthKeys/AuthKey_XXXX.p8
-            
-
       - name: Setup CI
         working-directory: ios
         run: bundle exec fastlane setting_continious_integration --verbose
@@ -91,18 +81,6 @@ jobs:
         working-directory: ios
         run: bundle exec fastlane configure_match --verbose
       
-      # - name: Configure code signing
-      #   run: |
-      #       KEYCHAIN_NAME=fastlane-ios-build.keychain-db
-      #       KEYCHAIN_PASSWORD=password
-      #       KEYCHAIN_PATH="$HOME/Library/Keychains/${KEYCHAIN_NAME}"
-
-      #       security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
-
-      - name: Increment build number
-        working-directory: ios
-        run: bundle exec fastlane inc_build_number --verbose
-
       - name: Check installed profiles
         run: ls -la ~/Library/MobileDevice/Provisioning\ Profiles
       
