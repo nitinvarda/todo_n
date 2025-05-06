@@ -25,6 +25,12 @@ DerivedData
 *.xcuserstate
 **/.xcode.env.local
 
+
+#hide cert files
+**.p8
+
+
+
 # Android/IntelliJ
 #
 build/
