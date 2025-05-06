@@ -9,8 +9,8 @@ jobs:
     runs-on: macos-14
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-      MATCH_KEYCHAIN_NAME: fastlane-ios-build
-      MATCH_KEYCHAIN_PASSWORD: password
+      MATCH_KEYCHAIN_NAME: ${{secrets.MATCH_KEYCHAIN_NAME}}
+      MATCH_KEYCHAIN_PASSWORD: ${{secrets.MATCH_KEYCHAIN_PASSWORD}}
       APPLE_ISSUER_ID : ${{secrets.APPLE_ISSUER_ID }}
       APPLE_KEY_ID : ${{secrets.APPLE_KEY_ID }}
       APPLE_API_KEY_BASE64: ${{secrets.APPLE_API_KEY_BASE64}}
@@ -71,7 +71,7 @@ jobs:
 
       - name: Decode API key
         run: |
-          echo "${{ secrets.APPLE_API_KEY_BASE64 }}" | base64 -d > ios/$APPLE_KEY_PATH
+          echo "${{ secrets.APPLE_API_KEY_BASE64 }}" | base64 -d > ios/${{secrets.APPLE_KEY_PATH}}
 
       - name: Setup CI
         working-directory: ios
