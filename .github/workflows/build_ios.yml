@@ -71,6 +71,7 @@ jobs:
 
       - name: Decode API key
         run: |
+          mkdir -p ios/fastlane/Authkeys
           echo "${{ secrets.APPLE_API_KEY_BASE64 }}" | base64 -d > ios/${{secrets.APPLE_KEY_PATH}}
 
       - name: Setup CI
