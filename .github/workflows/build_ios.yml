@@ -53,20 +53,20 @@ jobs:
         run: |
           bundle install      
     
-      # - name: Create custom keychain
-      #   run: |
-      #     KEYCHAIN_NAME=fastlane-ios-build.keychain-db
-      #     KEYCHAIN_PASSWORD=password
-      #     KEYCHAIN_PATH="$HOME/Library/Keychains/$KEYCHAIN_NAME"
+      - name: Create custom keychain
+        run: |
+          KEYCHAIN_NAME=fastlane-ios-build.keychain-db
+          KEYCHAIN_PASSWORD=password
+          KEYCHAIN_PATH="$HOME/Library/Keychains/$KEYCHAIN_NAME"
       
-      #     # Create the keychain
-      #     security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_NAME"
+          # Create the keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_NAME"
       
-      #     # Unlock it
-      #     security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_NAME"
+          # Unlock it
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_NAME"
       
-      #     # Add to keychain list
-      #     security list-keychains -s "$KEYCHAIN_PATH"
+          # Add to keychain list
+          security list-keychains -s "$KEYCHAIN_PATH"
 
 
       - name: Setup CI
